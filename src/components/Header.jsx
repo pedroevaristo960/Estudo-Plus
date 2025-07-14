@@ -1,11 +1,12 @@
 import { UserCircle } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import {PageTitles} from "../utils/PageTitles";
+import { getPageTitle} from "../utils/PageTitles";
 
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation()
   const menuRef = useRef(null);
 
 // Função para alternar o menu
@@ -29,7 +30,7 @@ const Header = () => {
     <header className="bg-white shadow px-6 py-3 flex items-center justify-between border-b">
       {/* Logo e Título */}
       <div className="flex items-center">
-        <h1 className="text-base text-gray-600 hidden sm:block"><PageTitles path={useLocation().pathname}/></h1>
+        <h1 className="text-base text-gray-600 hidden sm:block">{getPageTitle(location.pathname)}</h1>
       </div>
 
       {/* Ícone do utilizador */}
