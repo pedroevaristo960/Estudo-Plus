@@ -8,7 +8,7 @@ export const DocumentsCard = () => {
   ];
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
+    <div className="p-6 rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4 flex items-center gap-3">
         <FileText size={18} /> Novos Documentos
       </h2>
@@ -16,7 +16,7 @@ export const DocumentsCard = () => {
         {documents.map((doc) => (
           <li
             key={doc.id}
-            className="flex justify-between items-center p-3 bg-gray-50 rounded-md text-sm"
+            className="flex justify-between items-center p-3 bg-gray-50 rounded-md text-sm "
           >
             <span>{doc.title}</span>
             <span className="text-gray-500">

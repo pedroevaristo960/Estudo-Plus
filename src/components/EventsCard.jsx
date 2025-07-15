@@ -2,7 +2,7 @@ import { Calendar } from "lucide-react";
 
 export const EventsCard = ({ eventos }) => {
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md">
+    <div className="p-6  rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
         <Calendar size={18} /> Próximos Eventos
       </h3>
