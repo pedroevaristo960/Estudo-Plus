@@ -1,6 +1,6 @@
 export default function Login() {
   return (
-    <section className="max-w-md mx-auto mt-20 p-8 bg-white rounded-xl shadow-lg text-[#2F4858] text-lg">
+    <section className="max-w-md mx-auto mt-20 p-8 bg-white rounded-xl shadow-lg text-[#33658A] text-lg">
       <h1 className="text-4xl font-bold text-center mb-10">ESTUDO+</h1>
 
       <div className="mb-6">
@@ -11,7 +11,7 @@ export default function Login() {
           id="iname"
           type="text"
           placeholder="Por favor, insira o seu nome"
-          className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2F4858] focus:border-transparent"
+          className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A] focus:border-transparent"
         />
       </div>
 
@@ -23,20 +23,18 @@ export default function Login() {
           id="ipassword"
           type="password"
           placeholder="Por favor, insira a sua senha"
-          className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#2F4858] focus:border-transparent"
+          className="w-full h-12 px-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A] focus:border-transparent"
         />
       </div>
 
-      <button
-        className="w-full h-12 bg-[#2F4858] text-white rounded-md hover:bg-[#466b82] transition-colors duration-300 font-semibold"
-      >
+      <button className="cursor-pointer w-full h-12 bg-[#2F4858] text-white rounded-md hover:bg-[#33658A] transition-colors duration-300 font-semibold">
         Entrar
       </button>
 
       <div className="text-center mt-6 text-sm">
         <p>
           Ainda não tem conta?{' '}
-          <a href="#" className="underline font-bold">
+          <a href="/register" className="underline font-bold">
             Cadastrar-se
           </a>
         </p>
