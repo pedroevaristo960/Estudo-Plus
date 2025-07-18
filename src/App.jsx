@@ -5,6 +5,7 @@ import './App.css';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Card from './components/Card';
 import RequireAuth from './components/RequireAuth'; 
 export default function App() {
   return (
@@ -12,9 +13,13 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route element={<Layout />}>
-          <Route path='/home' element={<RequireAuth page={<Home/>}/>} />
-          <Route path="/disciplinas" element={<RequireAuth page={<Disciplinas />}/>} />
+        <Route path="/addSubjects" element={<Card />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/disciplinas" element={<Disciplinas />} />
         </Route>
       </Routes>
     </BrowserRouter>
