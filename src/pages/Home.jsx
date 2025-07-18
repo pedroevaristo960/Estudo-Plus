@@ -3,9 +3,11 @@ import  Saudação  from "../components/Saudacao";
 import { Photo } from "../utils/Photo";
 import { Aside } from "../components/Aside";
 import { Search } from "lucide-react";
+import TasksCard from "../components/TasksCard";
+import { DicasCard } from "../components/DicasCard";
 
 const Home = () => {
-  const tarefas = [];
+  const aside = true; // Simula a condição para exibir o Aside
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 p-6">
@@ -34,26 +36,22 @@ const Home = () => {
 </div>
 
         {/* Tarefas Pendentes */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
-          <div className="lg:col-span-2 mt-5">
-            <div className="border-b p-4 rounded italic text-gray-600">
-              {tarefas.length === 0 ? (
-                "Você não tem pendências."
-              ) : (
-                tarefas.map((t, i) => (
-                  <p key={i} className="text-sm">
-                    {t}
-                  </p>
-                ))
-              )}
-            </div>
+        <article>
+           <div className="flex justify-center ">
+      <TasksCard />
+    </div>
+          </article>
+        {/* Dicas do Dia */}
+        <article>
+          <div className="flex justify-center">
+            <DicasCard />
           </div>
-        </div>
+        </article>
       </section>
 
       {/* Aside lateral */}
       <aside className="w-full lg:max-w-sm">
-        <Aside />
+        <Aside dominio={aside} />
       </aside>
     </div>
   );

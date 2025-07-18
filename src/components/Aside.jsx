@@ -1,7 +1,7 @@
 import { DocumentsCard } from "./DocumentsCard";
 import { EventsCard } from "./EventsCard";
 import { Dominio } from "./Dominio";    
-export const Aside = () => {
+export const Aside = ({dominio}) => {
     const events = [
         {
           data: "2023-10-01",
@@ -10,8 +10,12 @@ export const Aside = () => {
       {
         data: "2023-10-05",
         descricao: "Entrega de relatório",
-      }
+      },
+      {
+        data: "2025-10-10",
+        descricao: "Prova de Matematica",}
       ];
+      if(dominio){
     return (
         <aside className="space-y-6 ">
             {/* Novos documentos */}
@@ -27,4 +31,5 @@ export const Aside = () => {
          </div>
         </aside>
     )
+} else return(null)
 }
