@@ -13,13 +13,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/addSubjects" element={<Card />} />
-      </Routes>
-
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/disciplinas" element={<Disciplinas />} />
+         <Route path="/addSubjects" element={<Card />} />
+        <Route element={<Layout />}>
+          <Route path='/home' element={<RequireAuth page={<Home/>}/>} />
+          <Route path="/disciplinas" element={<RequireAuth page={<Disciplinas />}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
