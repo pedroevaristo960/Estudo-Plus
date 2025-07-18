@@ -5,6 +5,7 @@ import { Aside } from "../components/Aside";
 import { Search } from "lucide-react";
 import TasksCard from "../components/TasksCard";
 import { DicasCard } from "../components/DicasCard";
+const user = JSON.parse(localStorage.getItem("loggedUser"));
 
 const Home = () => {
   const aside = true; // Simula a condição para exibir o Aside
@@ -16,7 +17,7 @@ const Home = () => {
         {/* Saudação */}
         <header className="flex items-center justify-center gap-3">
           <Photo className={`w-10 h-10 shrink-0`}/>
-          <Saudação username="Erasmo Veloso"/>
+          <Saudação username={user.firstName+" "+user.lastName}/>
         </header>
   
         <div className="rounded-lg overflow-hidden border border-gray-300 bg-gray-100">

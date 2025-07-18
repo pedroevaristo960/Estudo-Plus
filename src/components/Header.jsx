@@ -2,12 +2,14 @@ import { UserCircle } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getPageTitle} from "../utils/PageTitles";
+import { useNavigate } from 'react-router-dom';
 
-
+const user = JSON.parse(localStorage.getItem("loggedUser"));
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation()
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
 // Função para alternar o menu
     const toggleMenu = () => {
@@ -47,9 +49,9 @@ const Header = () => {
         {menuOpen && (
           <div className="absolute right-0 mt-2 w-64 bg-white border rounded-lg shadow-md z-50">
             <div className="p-4 border-b">
-              <p className="font-semibold text-gray-800">Erasmo Veloso</p>
-              <p className="text-sm text-gray-500">erasmo_veloso</p>
-              <p className="text-sm text-gray-500 mt-1">10ª Classe – Informática</p>
+              <p className="font-semibold text-gray-800">{user.firstName+" "+user.lastName}</p>
+              <p className="text-sm text-gray-500">{user.username}</p>
+              <p className="text-sm text-gray-500 mt-1">{user.classLevel} - Curso: {""+user.curse}</p>
             </div>
             <ul className="divide-y text-sm">
               <li>
@@ -58,7 +60,8 @@ const Header = () => {
                 </button>
               </li>
               <li>
-                <button className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
+                <button  onClick={() => { localStorage.removeItem('loggedUser'); navigate('/')}} 
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600">
                   Sair
                 </button>
               </li>

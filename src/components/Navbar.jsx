@@ -12,8 +12,7 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { to: "/", 
-    label: "Visão Geral", icon: <LayoutDashboard size={20} /> },
+  { to: "/home", label: "Visão Geral", icon: <LayoutDashboard size={20} /> },
   { to: "/horario", label: "Horário", icon: <Calendar size={20} /> },
   { to: "/biblioteca", label: "Biblioteca", icon: <BookOpen size={20} /> },
   { to: "/aula", label: "Aula", icon: <GraduationCap size={20} /> },

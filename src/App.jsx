@@ -1,22 +1,20 @@
-import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Disciplinas from './pages/Disciplinas';
 import './App.css';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import RequireAuth from './components/RequireAuth'; 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-      </Routes>
-
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/disciplinas" element={<Disciplinas />} />
+        <Route element={<Layout />}>
+          <Route path='/home' element={<RequireAuth page={<Home/>}/>} />
+          <Route path="/disciplinas" element={<RequireAuth page={<Disciplinas />}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
