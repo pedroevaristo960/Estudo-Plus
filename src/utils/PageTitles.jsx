@@ -1,6 +1,6 @@
 export const PageTitles = {
   "/": "Visão Geral",
-  "/horario": "Horário",
+  "/horario": "Horário de aulas",
   "/biblioteca": "Biblioteca",
   "/aula": "Aulas",
     "/disciplinas": "Disciplinas",
