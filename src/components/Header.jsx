@@ -36,8 +36,8 @@ const Header = () => {
       </div>
 
       {/* Ícone do utilizador */}
-      <div className="relative" ref={menuRef}>
-        <button
+      <div className="relative" ref={menuRef} title={`Perfil e Definições - ${user.firstName} com sessão iniciada`} >
+        <button 
           onClick={toggleMenu}
           className={`p-1 rounded-full hover:bg-gray-100 focus:outline-none transition ${
             menuOpen ? "bg-gray-100 ring-2 ring-blue-300" : ""
