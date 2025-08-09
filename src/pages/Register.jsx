@@ -16,7 +16,14 @@ export default function Register() {
   const schools = [
     {
       educationLevel: 'Ensino Primário',
-      schoolClasses: ['1ª Classe', '2ª Classe', '3ª Classe', '4ª Classe', '5ª Classe', '6ª Classe'],
+      schoolClasses: [
+        '1ª Classe',
+        '2ª Classe',
+        '3ª Classe',
+        '4ª Classe',
+        '5ª Classe',
+        '6ª Classe',
+      ],
     },
     {
       educationLevel: 'Ensino Secundário - 1º Ciclo',
@@ -28,7 +35,12 @@ export default function Register() {
     },
     {
       educationLevel: 'Ensino Superior',
-      schoolClasses: ['1º Ano Superior', '2º Ano Superior', '3º Ano Superior', '4º Ano Superior'],
+      schoolClasses: [
+        '1º Ano Superior',
+        '2º Ano Superior',
+        '3º Ano Superior',
+        '4º Ano Superior',
+      ],
     },
   ];
 
@@ -43,7 +55,7 @@ export default function Register() {
   };
 
   const generateUsername = () => {
-    if (!firstName) return alert("Insira o primeiro nome!");
+    if (!firstName) return alert('Insira o primeiro nome!');
 
     const fn = firstName.trim().toLowerCase();
     const ln = lastName?.trim().toLowerCase() || '';
@@ -65,24 +77,28 @@ export default function Register() {
       `${fn.slice(0, 3)}${ln.slice(0, 3)}`,
       `${fn}_${rand()}`,
       `${ln}_${rand()}`,
-      `${ln.slice(0, 4)}${rand()}`
+      `${ln.slice(0, 4)}${rand()}`,
     ].filter(Boolean);
 
     // Garante que não repita o mesmo que está atualmente
-    const filtered = options.filter(option => option !== username);
+    const filtered = options.filter((option) => option !== username);
     const nextUsername = filtered[Math.floor(Math.random() * filtered.length)];
 
     setUsername(nextUsername);
     setKeep(true);
   };
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!username || !gender || !classLevel || !password || password !== confirmPassword) {
-      alert("Preencha todos os campos corretamente!");
+    if (
+      !username ||
+      !gender ||
+      !classLevel ||
+      !password ||
+      password !== confirmPassword
+    ) {
+      alert('Preencha todos os campos corretamente!');
       return;
     }
 
@@ -95,11 +111,11 @@ export default function Register() {
       password,
     };
 
-    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
     users.push(newUser);
-    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem('users', JSON.stringify(users));
 
-    alert("Usuário criado com sucesso!");
+    alert('Usuário criado com sucesso!');
   };
 
   return (
@@ -110,32 +126,61 @@ export default function Register() {
         {/* Nomes */}
         <div className="flex flex-col md:flex-row gap-6 mb-8">
           <div className="flex-1">
-            <label htmlFor="firstName" className="block mb-2 font-semibold">Primeiro nome</label>
-            <input value={firstName} onChange={(e) => setFirstName(e.target.value)}
-              type="text" id="firstName" placeholder="Por favor, insira o seu primeiro nome"
-              className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]" />
+            <label htmlFor="firstName" className="block mb-2 font-semibold">
+              Primeiro nome
+            </label>
+            <input
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              type="text"
+              id="firstName"
+              placeholder="Por favor, insira o seu primeiro nome"
+              className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
+            />
           </div>
 
           <div className="flex-1">
-            <label htmlFor="lastName" className="block mb-2 font-semibold">Último nome (opcional)</label>
-            <input value={lastName} onChange={(e) => setLastName(e.target.value)}
-              type="text" id="lastName" placeholder="Por favor, insira o seu último nome"
-              className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]" />
+            <label htmlFor="lastName" className="block mb-2 font-semibold">
+              Último nome (opcional)
+            </label>
+            <input
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              type="text"
+              id="lastName"
+              placeholder="Por favor, insira o seu último nome"
+              className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
+            />
           </div>
         </div>
 
         {/* Username gerado */}
         <div className="mb-8">
-          <label htmlFor="username" className="block mb-2 font-semibold">Nome de utilizador</label>
+          <label htmlFor="username" className="block mb-2 font-semibold">
+            Nome de utilizador
+          </label>
 
           <div className="w-full h-12 px-3 py-2 border border-gray-300 rounded-md text-gray-600 flex items-center justify-between">
             {keep && <p className="truncate">{username}</p>}
             {keep && (
-              <button onClick={handleCopy} className="ml-4 text-[#33658A]" title="Copiar nome">
-                {copied ? <Check size={20} className="text-green-600" /> : <Copy size={20} />}
+              <button
+                onClick={handleCopy}
+                className="ml-4 text-[#33658A]"
+                title="Copiar nome"
+              >
+                {copied ? (
+                  <Check size={20} className="text-green-600" />
+                ) : (
+                  <Copy size={20} />
+                )}
               </button>
             )}
           </div>
+        </div>
+        <div className="mb-8">
+          <label htmlFor="username" className="block mb-2 font-semibold">
+            Nome de utilizador
+          </label>
 
           {/* Feedback */}
           {copied && (
@@ -155,33 +200,51 @@ export default function Register() {
           </p>
         </div>
 
-
         {/* Gênero */}
         <div className="mb-8">
-          <label htmlFor="gender" className="block mb-2 font-semibold">Gênero</label>
-          <select value={gender} onChange={(e) => setGender(e.target.value)}
+          <label htmlFor="gender" className="block mb-2 font-semibold">
+            Gênero
+          </label>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
             id="gender"
             className="w-full h-12 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
           >
-            <option value="" hidden>Por favor, selecione o gênero</option>
+            <option value="" hidden>
+              Por favor, selecione o gênero
+            </option>
             {selects.map((g) => (
-              <option key={g} value={g}>{g}</option>
+              <option key={g} value={g}>
+                {g}
+              </option>
             ))}
           </select>
         </div>
 
         {/* Classe */}
         <div className="mb-8">
-          <label htmlFor="classLevel" className="block mb-2 font-semibold">Classe</label>
-          <select value={classLevel} onChange={(e) => setClassLevel(e.target.value)}
+          <label htmlFor="classLevel" className="block mb-2 font-semibold">
+            Classe
+          </label>
+          <select
+            value={classLevel}
+            onChange={(e) => setClassLevel(e.target.value)}
             id="classLevel"
             className="w-full h-12 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
           >
-            <option value="" hidden>Por favor, selecione a classe</option>
+            <option value="" hidden>
+              Por favor, selecione a classe
+            </option>
             {schools.map((school) => (
-              <optgroup key={school.educationLevel} label={school.educationLevel}>
+              <optgroup
+                key={school.educationLevel}
+                label={school.educationLevel}
+              >
                 {school.schoolClasses.map((c) => (
-                  <option key={c} value={c}>{c}</option>
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
                 ))}
               </optgroup>
             ))}
@@ -191,16 +254,31 @@ export default function Register() {
         {/* Senha */}
         <div className="flex flex-col md:flex-row gap-6 mb-8">
           <div className="flex-1">
-            <label htmlFor="password" className="block mb-2 font-semibold">Senha</label>
-            <input value={password} onChange={(e) => setPassword(e.target.value)}
-              type="password" id="password" placeholder="Insira a senha"
+            <label htmlFor="password" className="block mb-2 font-semibold">
+              Senha
+            </label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+              placeholder="Insira a senha"
               className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
             />
           </div>
           <div className="flex-1">
-            <label htmlFor="confirmPassword" className="block mb-2 font-semibold">Confirme a senha</label>
-            <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
-              type="password" id="confirmPassword" placeholder="Confirme a senha"
+            <label
+              htmlFor="confirmPassword"
+              className="block mb-2 font-semibold"
+            >
+              Confirme a senha
+            </label>
+            <input
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirme a senha"
               className="w-full h-14 p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#33658A]"
             />
           </div>
@@ -208,8 +286,10 @@ export default function Register() {
 
         {/* Botão */}
         <div className="text-center">
-          <button type="submit"
-            className="w-full max-w-xs bg-[#2F4858] text-white p-4 rounded-md hover:bg-[#33658A] transition-colors font-semibold">
+          <button
+            type="submit"
+            className="w-full max-w-xs bg-[#2F4858] text-white p-4 rounded-md hover:bg-[#33658A] transition-colors font-semibold"
+          >
             Criar Perfil
           </button>
         </div>
@@ -217,7 +297,10 @@ export default function Register() {
 
       <p className="mt-6 text-center">
         Já tem conta?{' '}
-        <a href="/" className="underline font-semibold text-[#2F4858] hover:text-[#33658A]">
+        <a
+          href="/"
+          className="underline font-semibold text-[#2F4858] hover:text-[#33658A]"
+        >
           Entrar
         </a>
       </p>

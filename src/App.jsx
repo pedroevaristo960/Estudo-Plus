@@ -9,6 +9,7 @@ import Card from './components/Card';
 import RequireAuth from './components/RequireAuth'; 
 import Schedule from './pages/Schedule';
 import Hourly from './pages/Hourly';
+import Nerdola from './pages/Nerdola';
 export default function App() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/disciplinas" element={<Disciplinas />} />
           <Route path="/horario" element={<Hourly />} />
+          <Route path="/nerdola" element={<Nerdola />} />
         </Route>
       </Routes>
     </BrowserRouter>
